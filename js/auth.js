@@ -1,8 +1,10 @@
 //listen for authentication state changes
 auth.onAuthStateChanged(user => {
   if(user) {
+    setupUI(user);
     console.log("User logged in:", user);
   } else {
+    setupUI(user);
     console.log("User logged out");
   }
 });
