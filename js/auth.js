@@ -1,11 +1,17 @@
 //listen for authentication state changes
 auth.onAuthStateChanged(user => {
   if(user) {
+    //get data from the firesotre database
+    db.collection('guides').get().then(snapshot => {
+      setupPosts(snapshot.docs);
+      //console.log(snapshot.docs);
+    });
     setupUI(user);
-    console.log("User logged in:", user);
+    //console.log("User logged in:", user);
   } else {
     setupUI(user);
-    console.log("User logged out");
+    setupPosts([]);
+    //console.log("User logged out");
   }
 });
 
