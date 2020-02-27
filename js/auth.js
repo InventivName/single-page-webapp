@@ -23,4 +23,4 @@ logout.addEventListener('click', function(e) {
   e.preventDefault();
   auth.signOut();
   console.log('signed out');
-})
+});
