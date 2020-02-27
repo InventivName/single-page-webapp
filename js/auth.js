@@ -1,6 +1,6 @@
 //references to the HTML elements so they can be manipulated by JS
 const signupForm = document.querySelector('#signup-form');
-const logout = document.querySelector('#logout');
+
 //signing up users
 signupForm.addEventListener('submit', function(e) {
   e.preventDefault();
@@ -16,10 +16,3 @@ signupForm.addEventListener('submit', function(e) {
     signupForm.reset();
   });
 });
-
-//logging users out
-logout.addEventListener('click', function(e) {
-  e.preventDefault();
-  auth.signOut();
-  console.log('signed out');
-})
