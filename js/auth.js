@@ -15,6 +15,20 @@ auth.onAuthStateChanged(user => {
   }
 });
 
+//create post
+const createForm = document.querySelector('#create-form');
+createForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  db.collection('guides').add({
+    title: createForm['title'].value,
+    content: createForm['content'].value
+  }).then(() => {
+    // reset form
+    createForm.reset();
+  });
+});
+
 //references to the HTML elements so they can be manipulated by JS
 const signupForm = document.querySelector('#signup-form');
 const logout = document.querySelector('#logout');
