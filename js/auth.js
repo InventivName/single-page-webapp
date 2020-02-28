@@ -2,7 +2,7 @@
 auth.onAuthStateChanged(user => {
   if(user) {
     //get data from the firesotre database
-    db.collection('guides').get().then(snapshot => {
+    db.collection('guides').onSnapshot(snapshot => {
       setupPosts(snapshot.docs);
       //console.log(snapshot.docs);
     });
