@@ -2,6 +2,7 @@
 const loggedIn = document.querySelectorAll('.logged-in');
 const loggedOut = document.querySelectorAll('.logged-out');
 const postList = document.querySelector('.posts');
+const accountDetails = document.querySelector('.account-details');
 
 //setup the content - posts
 const setupPosts = (data) => {
@@ -33,9 +34,16 @@ const setupPosts = (data) => {
 const setupUI = (user) => {
   //menu items will change depending on if a user is logged in or not
   if(user) {
+    //displaying account info
+    const html = `
+      <div>Logged in as ${user.email}</div>
+    `;
+    accountDetails.innerHTML = html;
     loggedIn.forEach(item => item.style.display = 'inline-block');
     loggedOut.forEach(item => item.style.display = 'none');
   } else {
+    //hide account details if logged out
+    accountDetails.innerHTML = '';
     loggedIn.forEach(item => item.style.display = 'none');
     loggedOut.forEach(item => item.style.display = 'inline-block');
   }

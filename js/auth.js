@@ -1,5 +1,6 @@
 //listen for authentication state changes
 auth.onAuthStateChanged(user => {
+  console.log(user);
   if(user) {
     //get data from the firesotre database
     db.collection('guides').onSnapshot(snapshot => {
