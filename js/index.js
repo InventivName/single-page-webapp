@@ -35,10 +35,14 @@ const setupUI = (user) => {
   //menu items will change depending on if a user is logged in or not
   if(user) {
     //displaying account info
-    const html = `
-      <div>Logged in as ${user.email}</div>
-    `;
-    accountDetails.innerHTML = html;
+    db.collection('users').doc(user.uid).get().then(doc => {
+      const html = `
+        <div>Logged in as ${user.email}</div>
+        <div>${doc.data().bio}</div>
+      `;
+      accountDetails.innerHTML = html;
+    });
+    
     loggedIn.forEach(item => item.style.display = 'inline-block');
     loggedOut.forEach(item => item.style.display = 'none');
   } else {
