@@ -34,6 +34,7 @@ createForm.addEventListener('submit', (e) => {
 const signupForm = document.querySelector('#signup-form');
 const logout = document.querySelector('#logout');
 const loginForm = document.querySelector('#login-form');
+const profileForm = document.querySelector('.profile-form');
 
 //signing up users
 signupForm.addEventListener('submit', function(e) {
@@ -49,7 +50,8 @@ signupForm.addEventListener('submit', function(e) {
   auth.createUserWithEmailAndPassword(email, password).then(cred => {
     //create user and get id from auth
     db.collection('users').doc(cred.user.uid).set({
-      bio: signupForm['signup-bio'].value
+      bio: signupForm['signup-bio'].value,
+      name: signupForm['display-name'].value
     });
   }).then(() => {
     //reset the signup form

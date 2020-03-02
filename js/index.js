@@ -3,6 +3,7 @@ const loggedIn = document.querySelectorAll('.logged-in');
 const loggedOut = document.querySelectorAll('.logged-out');
 const postList = document.querySelector('.posts');
 const accountDetails = document.querySelector('.account-details');
+const userCont = document.querySelector('.user-container');
 
 //setup the content - posts
 const setupPosts = (data) => {
@@ -27,20 +28,26 @@ const setupPosts = (data) => {
     postList.innerHTML = '<h5 class="center-align">Login to view posts.</h5>';
   }
 
-
 };
 
 //create the conditional menu
 const setupUI = (user) => {
   //menu items will change depending on if a user is logged in or not
   if(user) {
-    //displaying account info
+    //displaying account info in profile modal
     db.collection('users').doc(user.uid).get().then(doc => {
       const html = `
-        <div>Logged in as ${user.email}</div>
+        <div>Logged in as ${doc.data().name}</div>
+        <div>Email: ${user.email}</div>
         <div>${doc.data().bio}</div>
       `;
       accountDetails.innerHTML = html;
+
+      //displaying user details on home page
+      const userDetails = `
+        <h5>${doc.data().name}</h5>
+      `;
+      userCont.innerHTML = userDetails;
     });
     
     loggedIn.forEach(item => item.style.display = 'inline-block');

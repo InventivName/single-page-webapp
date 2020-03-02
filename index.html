@@ -15,10 +15,10 @@
       <div class="container">
         <a href="#" class="brand-logo white-text">SPA</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="#" class="white-text modal-trigger logged-in" style="display: none;">Admin</a></li>
           <li><a href="#account-modal" class="white-text modal-trigger logged-in" style="display: none;">Account</a></li>
           <li><a href="#create-modal" class="white-text modal-trigger logged-in" style="display: none;">Create</a></li>
           <li><a href="#signup-modal" class="white-text modal-trigger logged-out" style="display: none;">Signup</a></li>
+          <!-- <li><a href="#user-modal" class="white-text modal-trigger logged-in" style="display: none;">Profile</a></li> -->
           <li><a href="#login-modal" class="white-text modal-trigger logged-out" style="display: none;">Login</a></li>
           <li><a href="#" id="logout" class="white-text logged-in" style="display: none;">Logout</a></li>
         </ul>
@@ -40,8 +40,16 @@
           <label for="signup-pass">Password: </label>
         </div>
         <div class="input-field">
+          <input type="text" id="display-name" required>
+          <label for="display-name">Display Name: </label>
+        </div>
+        <div class="input-field">
           <input type="text" id="signup-bio" required>
           <label for="signup-bio">One Line Bio: </label>
+        </div>
+        <div class="input-field">
+          <p>Profile Image: </p>
+          <input type="file" id="user-img">
         </div>
         <button class="modal-close btn amber darken-2">Signup</button>
       </form>
@@ -95,7 +103,8 @@
 
   <!-- Content of the site - what is being posted -->
   <div class="container">
-    <h3 class="center-align">Title of Site</h3>
+    <div class="row center-align user-container">
+    </div>
   </div>
   <div class="container" style="margin-top: 40px;">
     <ul class="collapsible z-depth-0 posts" style="border:none;"></ul>
